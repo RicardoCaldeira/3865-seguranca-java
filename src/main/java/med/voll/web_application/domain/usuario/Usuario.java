@@ -1,11 +1,14 @@
 package med.voll.web_application.domain.usuario;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name="usuarios")
@@ -14,13 +17,23 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nome;
     private String email;
     private String senha;
-    private String nome;
+
+    public Usuario(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario() {
+
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return null;
     }
 
     @Override
@@ -35,5 +48,9 @@ public class Usuario implements UserDetails {
 
     public String getNome() {
         return nome;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
