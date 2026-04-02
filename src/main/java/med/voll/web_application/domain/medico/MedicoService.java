@@ -48,6 +48,7 @@ public class MedicoService {
     @Transactional
     public void excluir(Long id) {
         repository.deleteById(id);
+        usuarioService.excluir(id);
     }
 
     public List<DadosListagemMedico> listarPorEspecialidade(Especialidade especialidade) {

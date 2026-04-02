@@ -1,8 +1,5 @@
 package med.voll.web_application.domain.usuario;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,4 +28,9 @@ public class UsuarioService implements UserDetailsService {
         Usuario usuario = usuarioRepository.save(new Usuario(nome, email, senhaCriptografada));
         return usuario.getId();
     }
+
+    public void excluir(Long id) {
+        usuarioRepository.deleteById(id);
+    }
 }
+
