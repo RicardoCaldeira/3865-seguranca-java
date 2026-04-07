@@ -2,6 +2,7 @@ package med.voll.web_application.domain.medico;
 
 import jakarta.transaction.Transactional;
 import med.voll.web_application.domain.RegraDeNegocioException;
+import med.voll.web_application.domain.usuario.Perfil;
 import med.voll.web_application.domain.usuario.UsuarioService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +33,7 @@ public class MedicoService {
         }
 
         if (dados.id() == null) {
-            Long id = usuarioService.salvarUsuario(dados.nome(), dados.email(), dados.crm()); // crm senha temporaria
+            Long id = usuarioService.salvarUsuario(dados.nome(), dados.email(), dados.crm(), Perfil.MEDICO); // crm senha temporaria
             repository.save(new Medico(id, dados));
         } else {
             var medico = repository.findById(dados.id()).orElseThrow();
