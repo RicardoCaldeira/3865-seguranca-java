@@ -31,7 +31,7 @@ public class PacienteService {
         }
 
         if (dados.id() == null) {
-            var usuarioId = usuarioService.salvarUsuario(dados.nome(), dados.email(), dados.cpf(), Perfil.PACIENTE);
+            var usuarioId = usuarioService.salvarUsuario(dados.nome(), dados.email(), Perfil.PACIENTE);
             repository.save(new Paciente(usuarioId, dados));
         } else {
             var paciente = repository.findById(dados.id()).orElseThrow();
