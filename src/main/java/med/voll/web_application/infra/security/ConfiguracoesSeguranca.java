@@ -24,7 +24,7 @@ public class ConfiguracoesSeguranca {
     public SecurityFilterChain filtrosSeguranca(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(req -> {
-                        req.requestMatchers("/css/**", "/js/**", "/assets/**", "/", "/index", "/home").permitAll();
+                        req.requestMatchers("/css/**", "/js/**", "/assets/**", "/", "/index", "/home", "/esqueci-minha-senha", "/recuperar-conta").permitAll();
 //                        req.requestMatchers("/pacientes/**").hasRole("ATENDENTE");
 //                        req.requestMatchers(HttpMethod.GET, "/medicos").hasAnyRole("ATENDENTE", "PACIENTE");
 //                        req.requestMatchers("/medicos/**").hasRole("ATENDENTE");
